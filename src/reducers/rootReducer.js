@@ -13,17 +13,23 @@ const initState = {
 /* #42, 9:47 */
 const rootReducer = (state = initState, action) => {
   console.log('Action: ', action);
-  if (action.type === 'PLACE_PIECE') {
-    let newOccupier = state.board.filter(piece => {
-      return action.tile !== piece.tile;
+  if (action.type === 'PLACE_PIECE' && action.tile === 0) {
+    let newOccupier = state.board.map(piece => {
+      if(piece.tile === 0){return {tile: 0, occupant: 1}}
+      else{return piece}
+      /* return action.tile !== piece.tile; */
     })
-
+      
+    console.log('newOccupier: ',newOccupier);
     return {
       ...state,
       board: newOccupier
     }
+  
+  }
+  else {
+    console.log("nope, won't do action!")
   }
   return state;
 }
-
 export default rootReducer

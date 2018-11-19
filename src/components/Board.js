@@ -1,13 +1,15 @@
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 export class Board extends Component {
   
   handleClick = () => {
-    this.props.placePiece(this.props.board)
+    console.log('this.props.board[0]: ',this.props.board[0]);
+    this.props.placePiece(this.props.board[0].tile)
   }
-   
+
+  /* Kig på: https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method */
+
   render() {
     console.log(this.props.board);
 
@@ -29,7 +31,7 @@ export class Board extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    tiles: state.tiles
+    board: state.board
   }
 }
 
