@@ -17,9 +17,9 @@ const rootReducer = (state = initState, action) => {
   if (action.type === 'PLACE_PIECE') {
     let newOccupier = state.board.map(piece => {
       console.log("value: ", action.tileIndex);
-      if(piece.tileIndex === action.tileIndex){return {tileIndex: action.tileIndex, occupant: 1}}
+      if(piece.tileIndex === action.tileIndex && piece.occupant === 0){console.log("piece.occupant: ", piece.occupant); return {tileIndex: action.tileIndex, occupant: 1}}
       else{return piece}
-      /* return action.tile !== piece.tile; */
+      /* Havde filter været bedre? Piece bør omdøbes. Hvad er mest læsbart? */
     })
       
     console.log('newOccupier: ',newOccupier);
