@@ -11,14 +11,14 @@ const initState = {
     {tileIndex: 8, occupant: 0}]
 }
 /* #42, 9:47 */
+
+/* root reducer: https://www.youtube.com/watch?v=hOQ7x_X2gIg&list=PL4cUxeGkcC9iWstfXntcj8f-dFZ4UtlN3&index=12&t=0s */
 const rootReducer = (state = initState, action) => {
   console.log('Action: ', action);
-  /* console.log('occupant of 2: ', board[tileIndex[2]].occupant); */
   if (action.type === 'PLACE_PIECE') {
     let newOccupier = state.board.map(piece => {
       if(piece.tileIndex === action.tileIndex && piece.occupant === 0){return {tileIndex: action.tileIndex, occupant: 1}}
       else{return piece}
-      /* Havde filter været bedre? Piece bør omdøbes. Hvad er mest læsbart? */
     })
     return {
       ...state,
