@@ -3,10 +3,6 @@ import { connect } from 'react-redux'
 
 class Board extends Component {
 
-  /* handleClick = function(value){
-    this.props.placePiece(this.props.board[value].tileIndex)
-  } */
-
   handleClick = (value) => {
     this.props.placePiece(this.props.board[value].tileIndex)
   }
@@ -33,9 +29,10 @@ class Board extends Component {
   }
 }
 
+/* https://youtu.be/sh6hZKt-jh0?list=PL4cUxeGkcC9iWstfXntcj8f-dFZ4UtlN3&t=209 Her sættes rootReducerens ekstra key (place) på */
 const mapStateToProps = (state) => {
   return {
-    board: state.board
+    board: state.place.board
   }
 }
 
