@@ -1,18 +1,18 @@
 const initState = {
-  icon: 'X'
+  iconChoice: [{icon: 'X'}]
 }
 
 const pickIconReducer = (state = initState, action) => {
-  /* console.log('Action: ', action);
+  console.log('Action: ', action);
   if (action.type === 'CHANGE_ICON') {
     let newIcon = state;
-    if(action vs state is X){return 'O'}
-    else{return 'X'}
+    if (action.icon === 'X') { newIcon.icon = 'O' }
+    else { newIcon.icon = 'X' }
     return {
     ...state,
     icon: newIcon
     }
-  } */
+  }
   return state
 }
 

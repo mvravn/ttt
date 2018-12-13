@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 class Board extends Component {
 
-  handleClick = (value) => {
-    this.props.placePiece(this.props.board[value].tileIndex)
+  handleClick = (boardlocation) => {
+    this.props.placePiece(this.props.board[boardlocation].tileIndex)
   }
 
   render() {
