@@ -1,19 +1,22 @@
 const initState = {
-  iconChoice: [{icon: 'X'}]
+  icon: 'X'
 }
+
+/* Kunne godt bruge et tjek for, om spillet kører - i så fald skal man ikke kunne skifte */
 
 const pickIconReducer = (state = initState, action) => {
   console.log('Action: ', action);
   if (action.type === 'CHANGE_ICON') {
-    let newIcon = state;
-    if (action.icon === 'X') { newIcon.icon = 'O' }
-    else { newIcon.icon = 'X' }
+    let newIcon = () => {
+      if (action.icon === 'X') { return 'O' }
+      else { return 'X' }
+    }
     return {
-    ...state,
-    icon: newIcon
+      ...state,
+      icon: newIcon
     }
   }
-  return state
+  return state;
 }
 
 export default pickIconReducer

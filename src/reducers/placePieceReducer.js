@@ -15,12 +15,14 @@ const placePieceReducer = (state = initState, action) => {
   console.log('Action: ', action);
   if (action.type === 'PLACE_PIECE') {
     let newOccupier = state.board.map(piece => {
-    if(piece.tileIndex === action.tileIndex && piece.occupant === 0){return {tileIndex: action.tileIndex, occupant: 1}}
-    else{return piece}
+      if(piece.tileIndex === action.tileIndex && piece.occupant === 0){
+        return { tileIndex: action.tileIndex, occupant: 1 }
+      }
+      else{ return piece }
     })
     return {
-    ...state,
-    board: newOccupier
+      ...state,
+      board: newOccupier
     }
   }
   return state;

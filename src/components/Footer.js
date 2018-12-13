@@ -4,12 +4,13 @@ import { connect } from 'react-redux'
 export class Footer extends Component {
 
   handleClick = () => {
-    this.props.changeIcon()
+    this.props.changeIcon(this.props.icon)
+    /* console.log('click!', this.props.icon) */
   }
 
   render() {
     const theIcon = this.props.icon;
-    console.log('this.props ',this.props);
+    console.log('this.props ', this.props);
     return (
       <React.Fragment>
         <div className="footer surface">Footer text</div>
