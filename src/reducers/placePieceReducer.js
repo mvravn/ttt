@@ -8,7 +8,8 @@ const initState = {
     {tileIndex: 5, occupant: 0},
     {tileIndex: 6, occupant: 0},
     {tileIndex: 7, occupant: 0},
-    {tileIndex: 8, occupant: 0}]
+    {tileIndex: 8, occupant: 0}],
+  isGameOn: false
 }
 
 const placePieceReducer = (state = initState, action) => {
@@ -22,7 +23,8 @@ const placePieceReducer = (state = initState, action) => {
     })
     return {
       ...state,
-      board: newOccupier
+      board: newOccupier,
+      isGameOn: true
     }
   }
   return state;

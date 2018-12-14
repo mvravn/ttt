@@ -7,10 +7,10 @@ const initState = {
 const pickIconReducer = (state = initState, action) => {
   console.log('Action: ', action);
   if (action.type === 'CHANGE_ICON') {
-    let newIcon = () => {
-      if (action.icon === 'X') { return 'O' }
-      else { return 'X' }
-    }
+    let newIcon = '';
+    if (action.icon === 'X') { newIcon = 'O' }
+    else { newIcon = 'X' }
+  
     return {
       ...state,
       icon: newIcon
