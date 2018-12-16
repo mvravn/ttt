@@ -3,14 +3,15 @@ import { connect } from 'react-redux'
 
 export class Footer extends Component {
 
-  handleClick = () => {
-    this.props.changeIcon(this.props.icon)
+  handleClick = () => { if(!this.props.isGameOn){
+    this.props.changeIcon(this.props.icon)}
     /* console.log('click!', this.props.icon) */
   }
 
   render() {
     const theIcon = this.props.icon;
     console.log('this.props ', this.props);
+    
     return (
       <React.Fragment>
         <div className="footer surface">Footer text</div>
@@ -26,7 +27,8 @@ export class Footer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    icon: state.pickIcon.icon
+    icon: state.pickIcon.icon,
+    isGameOn: state.place.isGameOn
   }
 }
 
