@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+/* Ændre og animere https://stackoverflow.com/questions/34700425/react-animate-element-when-property-changes/34704054 */
+
 class Board extends Component {
 
   handleClick = (boardlocation) => {
@@ -12,8 +14,7 @@ class Board extends Component {
     
     const tiles = this.props.board;
     const boardLayout = tiles.map(tile => {
-      var piece = ' ';
-      console.log("Piece: ", this.props.icon);
+      var piece = '';
       if (tile.occupant === 1) { piece = this.props.icon }
       else if (tile.occupant === 2) {
         if(this.props.icon === 'X'){ piece = 'O' }
