@@ -13,45 +13,41 @@ class Board extends Component {
   }
 
   componentDidUpdate(prevProps){
-    console.log("prevProps ", prevProps);
-    console.log("prevProps.current ", prevProps.current);
+    /* console.log("props.board ", this.props.board);
+    console.log("prevProps.board ", prevProps.board); */
 
-    /* if (prevProps.current !== this.props.current){
-      if (prevProps.current === this.props.id){runBlueEmpty()}
-      if (this.props.current === this.props.id){runBlueFill()}
-    } */
+    for (let i = 0; i < 9; i++){
+      if(this.props.board[i].occupant !== prevProps.board[i].occupant){
+        console.log("Changed occupant of tileIndex is: ", i);
+        document.getElementById(`tile_${i}`).classList.add("cssPickedAni");
+      }
+    }
   }
 
   render() {
-    console.log("Board state: ", this.props.board);
-    console.log("Props on board: ", this.props);
+    /* console.log("Board state: ", this.props.board);
+    console.log("Props on board: ", this.props); */
     
     const tiles = this.props.board;
+    /* draws the board */
     const boardLayout = tiles.map(tile => {
-      var piece = '';
-      if (tile.occupant === 1) { piece = this.props.icon }
+      let piece = '';
+      /* use icon the player has chosen: */
+      if (tile.occupant === 1) { piece = this.props.icon } 
+      /* AI uses the opposite icon: */
       else if (tile.occupant === 2) {
         if(this.props.icon === 'X'){ piece = 'O' }
         else{ piece = 'X' }
       }
+      /* calculate the drawing */
       return (
         <div className="tile surface" id={`tile_${tile.tileIndex}`} onClick={() => this.handleClick(tile.tileIndex)} key={tile.tileIndex}>{piece}</div>
       )
-    }
-    
-    /* console.log("prevProps ", prevProps);
-    
-    Skal dette ind her?
-    componentDidUpdate(prevProps, prevState){
-      if (prevProps.current !== this.props.current){
-        if (prevProps.current === this.props.id){runBlueEmpty()}
-        if (this.props.current === this.props.id){runBlueFill()}
       }
-    } */
-   
     )
 
     return (
+      /* do the actual drawing */
       <div className="board">
         { boardLayout }
       </div>

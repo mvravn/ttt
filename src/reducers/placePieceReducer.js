@@ -13,8 +13,8 @@ const initState = {
 }
 
 const placePieceReducer = (state = initState, action) => {
-  console.log('Action: ', action);
   if (action.type === 'PLACE_PIECE') {
+    console.log('Action: ', action);
     let newOccupier = state.board.map(pieceBeingMapped => {
       if(pieceBeingMapped.tileIndex === action.tileIndex && pieceBeingMapped.occupant === 0){
         return { tileIndex: action.tileIndex, occupant: 1 }
