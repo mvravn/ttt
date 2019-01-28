@@ -9,7 +9,9 @@ https://www.reddit.com/r/reactjs/comments/6pofq9/how_to_trigger_an_animation_whe
 class Board extends Component {
 
   handleClick = (boardlocation) => {
-    this.props.placePiece(this.props.board[boardlocation].tileIndex)
+    console.log("isHumansTurn: ", this.props);
+    if(this.props.isHumansTurn === true){this.props.placePiece(this.props.board[boardlocation].tileIndex)}
+    /* this.props.placePiece(this.props.board[boardlocation].tileIndex) */
   }
 
   componentDidUpdate(prevProps){
@@ -59,6 +61,7 @@ class Board extends Component {
 const mapStateToProps = (state) => {
   return {
     board: state.place.board,
+    isHumansTurn: state.place.isHumansTurn,
     icon: state.pickIcon.icon
   }
 }
