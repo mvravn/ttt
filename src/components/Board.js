@@ -9,21 +9,26 @@ https://www.reddit.com/r/reactjs/comments/6pofq9/how_to_trigger_an_animation_whe
 class Board extends Component {
 
   handleClick = (boardlocation) => {
-    console.log("isHumansTurn: ", this.props);
-    if(this.props.isHumansTurn === true){this.props.placePiece(this.props.board[boardlocation].tileIndex)}
+    console.log("isHumanTurn: ", this.props);
+    if(this.props.isHumanTurn === true){this.props.placePiece(this.props.board[boardlocation].tileIndex)}
     /* this.props.placePiece(this.props.board[boardlocation].tileIndex) */
   }
 
   componentDidUpdate(prevProps){
-    /* console.log("props.board ", this.props.board);
-    console.log("prevProps.board ", prevProps.board); */
-
     for (let i = 0; i < 9; i++){
       if(this.props.board[i].occupant !== prevProps.board[i].occupant){
         console.log("Changed occupant of tileIndex is: ", i);
         document.getElementById(`tile_${i}`).classList.add("cssPickedAni");
       }
     }
+  }
+
+  /* AI placement here? */
+  /* if isHumanTurn === false analyze and place (also via placePieceReducer, make action nr. 2) */
+  /* console.log("testing ", this.props.board); */
+  /* måske skal den lægges i en componentDidUpdate? */
+  componentDidUpdate(){
+    console.log("testing ", this.props.board);
   }
 
   render() {
@@ -44,8 +49,7 @@ class Board extends Component {
       /* calculate the drawing */
       return (
         <div className="tile surface" id={`tile_${tile.tileIndex}`} onClick={() => this.handleClick(tile.tileIndex)} key={tile.tileIndex}>{piece}</div>
-      )
-      }
+      )}
     )
 
     return (
@@ -61,7 +65,7 @@ class Board extends Component {
 const mapStateToProps = (state) => {
   return {
     board: state.place.board,
-    isHumansTurn: state.place.isHumansTurn,
+    isHumanTurn: state.place.isHumanTurn,
     icon: state.pickIcon.icon
   }
 }
